@@ -2,10 +2,11 @@ const Editor = require('../models/Editor');
 
 module.exports = {
   async index(req, res) {
-
+  
     const id = req.params.id
-
-    if( id !== 'all' ){  
+    console.log(req.params.id)
+    
+    if ( id !== undefined ) {  
       const editor = await Editor.findOne({ editorId: id });
       return res.json(editor);
     } else {

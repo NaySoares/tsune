@@ -7,7 +7,7 @@ module.exports = {
     
     const id = req.params.id;
 
-    if (!id) {
+    if (id === undefined) {
       const imgs = await Image.find().sort('-createdAt');
       return res.json(imgs);
     } else {
