@@ -45,7 +45,7 @@ module.exports = async (bot, channelId) => {
               level: msg.content
             }
 
-            const resp = await api.post('/image', register).then(resp => {
+            const resp = await api.post('image', register).then(resp => {
               return (resp.data)
             }).catch(err => {
                 console.log(err);
