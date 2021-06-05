@@ -1,4 +1,6 @@
 const api = require('../services/api')
+const users = require('../configs/users')
+
 
 
 module.exports = {
@@ -8,7 +10,7 @@ module.exports = {
     const member = msg.mentions.users.first()
     const permission = msg.member;
 
-    if (permission.roles.cache.some(role => role.name === 'tsune')) {
+    if (permission.roles.cache.some(role => role.name === users.tagPermission)) {
       if (member) {
         const memberTarger = msg.guild.members.cache.get(member.id)
         
