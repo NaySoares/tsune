@@ -4,7 +4,6 @@ module.exports = {
 
   async index(req, res) {
 
-    
     const id = req.params.id;
 
     if (id === undefined) {

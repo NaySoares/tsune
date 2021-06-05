@@ -4,7 +4,6 @@ module.exports = {
   async index(req, res) {
   
     const id = req.params.id
-    console.log(req.params.id)
     
     if ( id !== undefined ) {  
       const editor = await Editor.findOne({ editorId: id });
