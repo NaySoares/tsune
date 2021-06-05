@@ -13,7 +13,8 @@ module.exports = {
         { name: 'tsune', value: 'Uma mensagem de olá' },
         { name: 'ajuda', value: 'Informações sobre o meu funcionamento'},
         { name: 'done', value: 'Me notificar que você entregou uma imagem'},
-        { name: 'pontos + @', value: 'Concede os pontos pela imagem editada'}
+        { name: 'pontos + @', value: 'Concede os pontos pela imagem editada'},
+        { name: 'drop', value: 'retira a imagem de um editor em caso de desistência'},
       )
     msg.channel.send(msgEmbed)
   }
