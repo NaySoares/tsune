@@ -1,6 +1,9 @@
 const channels = {
+  //antigo bot
   postImgs: '849114401859960832',
-  listenImgs: '849665136641441823'
+  listenImgs: '849665136641441823',
+  //new bot
+  justLightNovels:'969303901847302214'
 }
 
 module.exports = channels;

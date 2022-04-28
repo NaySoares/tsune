@@ -13,6 +13,7 @@ const prefix = '?';
 
 const imageRegister = require('./events/imageRegister.js');
 const ping = require('./events/ping.js');
+const novels = require('./events/novels.js');
 const postImage = require('./events/postImage.js');
 const editorMessage = require('./events/editorMessage.js');
 const channels = require('./configs/channels')
@@ -42,10 +43,9 @@ bot.on('ready', () => {
 
   editorMessage(bot)
   ping(bot, 'ping', 'pong!') 
-  imageRegister(bot , channels.listenImgs)
-  postImage(bot, channels.postImgs, 'Hello world!', [':heart:'])
-  
-  
+  novels(bot, channels.justLightNovels, 'novels', 'novels aqui!') 
+  //imageRegister(bot , channels.listenImgs)
+  //postImage(bot, channels.postImgs, 'Hello world!', [':heart:'])
 })
 
 bot.on('message', msg => {
@@ -68,7 +68,7 @@ bot.on('message', msg => {
   } else if (command === 'drop') {
     bot.commands.get('drop').execute(msg, args);
   }
-})
+  })
 
 
 //-------------------------------------------------------------//
