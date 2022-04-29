@@ -56,7 +56,7 @@ bot.on('message', msg => {
   const command = args.shift().toLowerCase();
   
   if (command === 'tsune') {
-    bot.commands.get('tsune').execute(msg, args);
+    bot.commands.get('tsune').execute(bot, msg, args);
   } else if (command === 'pontos') {
     bot.commands.get('pontos').execute(msg, args);
   } else if (command === 'done') {
@@ -73,12 +73,13 @@ bot.on('message', msg => {
 })
 
 function KeepAlive() {
-  bot.channels.cache.get(channels.justLightNovels).send("tô viva")
+  //bot.channels.cache.get(channels.justLightNovels).send("tô viva")
+  bot.commands.get('novel').execute(bot, channels.justLightNovels);
 }
 function runInfinite() {
   setInterval(KeepAlive, 1000 * 60 * 60); //1 hr
 };
-//runInfinite();
+runInfinite();
 
 
 //-------------------------------------------------------------//
