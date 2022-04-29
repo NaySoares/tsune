@@ -51,10 +51,10 @@ bot.on('ready', () => {
 bot.on('message', msg => {
   
   if(!msg.content.startsWith(prefix) || msg.author.bot) return;
-
+  
   const args = msg.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
-
+  
   if (command === 'tsune') {
     bot.commands.get('tsune').execute(msg, args);
   } else if (command === 'pontos') {
@@ -67,8 +67,18 @@ bot.on('message', msg => {
     bot.commands.get('comandos').execute(msg, args);
   } else if (command === 'drop') {
     bot.commands.get('drop').execute(msg, args);
+  } else if (command === 'novel') {
+    bot.commands.get('novel').execute(bot, channels.justLightNovels);
   }
-  })
+})
+
+function KeepAlive() {
+  bot.channels.cache.get(channels.justLightNovels).send("tô viva")
+}
+function runInfinite() {
+  setInterval(KeepAlive, 1000 * 60 * 60); //1 hr
+};
+//runInfinite();
 
 
 //-------------------------------------------------------------//
