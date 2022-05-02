@@ -69,6 +69,9 @@ bot.on('message', msg => {
     bot.commands.get('drop').execute(msg, args);
   } else if (command === 'novel') {
     bot.commands.get('novel').execute(bot, channels.justLightNovels);
+  } else if (command === 'agende') {
+    bot.commands.get('agende').execute(msg, args);
+    bot.commands.get('agende').init(bot);
   }
 })
 
