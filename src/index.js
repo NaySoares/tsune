@@ -9,7 +9,7 @@ const fs = require('fs');
 
 const path = require('path');
 const app = express();
-const prefix = '?';
+const prefix = '!';
 
 const imageRegister = require('./events/imageRegister.js');
 const ping = require('./events/ping.js');
@@ -35,7 +35,7 @@ for (const file of commandFiles) {
   bot.commands.set(command.name, command);
 }
 
-bot.login(process.env.TOKEN_BOT)
+bot.login(process.env.TOKEN_BOT_VIV)
 
 bot.on('ready', () => {
   console.log('Olá mundo, eu sou a Tsune!')
@@ -57,32 +57,25 @@ bot.on('message', msg => {
   
   if (command === 'tsune') {
     bot.commands.get('tsune').execute(bot, msg, args);
-  } else if (command === 'pontos') {
-    bot.commands.get('pontos').execute(msg, args);
   } else if (command === 'done') {
     bot.commands.get('done').execute(msg, args);
   } else if (command === 'ajuda') {
     bot.commands.get('ajuda').execute(msg, args);
   } else if (command === 'comandos') {
     bot.commands.get('comandos').execute(msg, args);
-  } else if (command === 'drop') {
-    bot.commands.get('drop').execute(msg, args);
   } else if (command === 'novel') {
     bot.commands.get('novel').execute(bot, channels.justLightNovels);
-  } else if (command === 'agende') {
-    bot.commands.get('agende').execute(msg, args);
-    bot.commands.get('agende').init(bot);
   }
 })
 
-function KeepAlive() {
-  //bot.channels.cache.get(channels.justLightNovels).send("tô viva")
-  bot.commands.get('novel').execute(bot, channels.justLightNovels);
-}
-function runInfinite() {
-  setInterval(KeepAlive, 1000 * 60 * 60); //1 hr
-};
-runInfinite();
+// function KeepAlive() {
+//   //bot.channels.cache.get(channels.justLightNovels).send("tô viva")
+//   bot.commands.get('novel').execute(bot, channels.justLightNovels);
+// }
+// function runInfinite() {
+//   setInterval(KeepAlive, 1000 * 60 * 60); //1 hr
+// };
+// runInfinite();
 
 
 //-------------------------------------------------------------//
