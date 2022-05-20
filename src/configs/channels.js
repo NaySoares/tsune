@@ -4,7 +4,7 @@ const channels = {
   listenImgs: '849665136641441823',
   //new bot
   justLightNovels:'969303901847302214',
-  avisos: 970503339601178647
+  avisos: '970503339601178647'
 }
 
 module.exports = channels;

@@ -16,7 +16,7 @@ module.exports = {
       if (err) {
         console.log("Something wrong when updating data!");
       }
-      console.log(doc);
+      console.log(`novel ${doc.title} postada`);
     });
 
     return

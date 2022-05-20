@@ -3,7 +3,7 @@ const NovelController = require('../controllers/NovelController');
 
 module.exports = {
   name: 'novel',
-  description: 'comandos disponiveis na Tsune',
+  description: 'sei lá',
   execute(bot, channelId) {
     
     async function getNovels () {

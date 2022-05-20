@@ -3,20 +3,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
-const Discord = require('discord.js');
 const mongoose = require('mongoose');
-const fs = require('fs'); 
 
-const path = require('path');
 const app = express();
 const prefix = '!';
 
-const imageRegister = require('./events/imageRegister.js');
 const ping = require('./events/ping.js');
 const novels = require('./events/novels.js');
-const postImage = require('./events/postImage.js');
 const editorMessage = require('./events/editorMessage.js');
-const channels = require('./configs/channels')
+const channels = require('./configs/channels');
+const novel = require('./commands/novel.js');
+const createBot = require ('./configs/bot/botDiscord')
 //---------------------------------------------------//
 
 mongoose.connect(process.env.MONGODB_KEY, {
@@ -24,28 +21,14 @@ mongoose.connect(process.env.MONGODB_KEY, {
 })
 
 //---------------------------------------------------//
-
-const directory = path.resolve(__dirname,'commands');
-const bot = new Discord.Client({ partials: [ "MESSAGE", "CHANNEL", "REACTION"]});
-bot.commands = new Discord.Collection();
-
-const commandFiles = fs.readdirSync(directory).filter(file => file.endsWith('.js'));
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`);
-  bot.commands.set(command.name, command);
-}
-
-bot.login(process.env.TOKEN_BOT_VIV)
-
+const bot = createBot();
 bot.on('ready', () => {
   console.log('Olá mundo, eu sou a Tsune!')
 
 
   editorMessage(bot)
   ping(bot, 'ping', 'pong!') 
-  novels(bot, channels.justLightNovels, 'novels', 'novels aqui!') 
-  //imageRegister(bot , channels.listenImgs)
-  //postImage(bot, channels.postImgs, 'Hello world!', [':heart:'])
+  novels(bot, channels.justLightNovels, 'novels', 'novels aqui!')
 })
 
 bot.on('message', msg => {
@@ -68,14 +51,12 @@ bot.on('message', msg => {
   }
 })
 
-// function KeepAlive() {
-//   //bot.channels.cache.get(channels.justLightNovels).send("tô viva")
-//   bot.commands.get('novel').execute(bot, channels.justLightNovels);
-// }
-// function runInfinite() {
-//   setInterval(KeepAlive, 1000 * 60 * 60); //1 hr
-// };
-// runInfinite();
+function updateNovels() {
+  console.log('tá atualizando!')
+  novel.execute(bot, '969303901847302214')
+}
+
+setInterval(updateNovels, 1000 * 60 * 65); //1hr e 5 min ( eu acho :D )
 
 
 //-------------------------------------------------------------//
