@@ -45,7 +45,7 @@ bot.on('message', msg => {
 
 function updateNovels() {
   console.log('tá atualizando!')
-  novel.execute(bot, channels.justLightNovels)
+  novel.execute(bot, channels.menu)
   hinowa.execute(bot, channels.hinowaGaCrush)
 }
 
