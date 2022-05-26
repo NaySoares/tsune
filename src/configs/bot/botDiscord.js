@@ -13,7 +13,7 @@ function createBot() {
     bot.commands.set(command.name, command);
   }
   
-  bot.login(process.env.TOKEN_BOT_VIV)
+  bot.login(process.env.TOKEN_BOT_VIV || process.env.TOKEN_BOT)
   return bot;
 }
 

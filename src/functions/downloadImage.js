@@ -4,7 +4,6 @@ const path = require('path');
 
 
 function Download(url, fileName) {
-  console.log(url, fileName);
   const destination = path.resolve(__dirname, '..', 'images', `${fileName}`)
 
   https.get(url, function(res) {
@@ -12,7 +11,6 @@ function Download(url, fileName) {
     res.pipe(fileStream)
     fileStream.on('finish', function() {
       fileStream.close();
-      console.log('baixado!')
     })
   })
 }

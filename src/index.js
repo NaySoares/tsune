@@ -10,10 +10,10 @@ const prefix = '!';
 
 const ping = require('./events/ping.js');
 const novels = require('./events/novels.js');
-const editorMessage = require('./events/editorMessage.js');
 const channels = require('./configs/channels');
 const novel = require('./commands/novel.js');
-const createBot = require ('./configs/bot/botDiscord')
+const createBot = require ('./configs/bot/botDiscord');
+const hinowa = require('./commands/hinowa.js');
 //---------------------------------------------------//
 
 mongoose.connect(process.env.MONGODB_KEY, {
@@ -25,10 +25,8 @@ const bot = createBot();
 bot.on('ready', () => {
   console.log('Olá mundo, eu sou a Tsune!')
 
-
-  editorMessage(bot)
   ping(bot, 'ping', 'pong!') 
-  novels(bot, channels.justLightNovels, 'novels', 'novels aqui!')
+  //novels(bot, channels.justLightNovels, 'novels', 'novels aqui!')
 })
 
 bot.on('message', msg => {
@@ -40,23 +38,18 @@ bot.on('message', msg => {
   
   if (command === 'tsune') {
     bot.commands.get('tsune').execute(bot, msg, args);
-  } else if (command === 'done') {
-    bot.commands.get('done').execute(msg, args);
-  } else if (command === 'ajuda') {
-    bot.commands.get('ajuda').execute(msg, args);
   } else if (command === 'comandos') {
     bot.commands.get('comandos').execute(msg, args);
-  } else if (command === 'novel') {
-    bot.commands.get('novel').execute(bot, channels.justLightNovels);
   }
 })
 
 function updateNovels() {
   console.log('tá atualizando!')
-  novel.execute(bot, '969303901847302214')
+  novel.execute(bot, channels.justLightNovels)
+  hinowa.execute(bot, channels.hinowaGaCrush)
 }
 
-setInterval(updateNovels, 1000 * 60 * 65); //1hr e 5 min ( eu acho :D )
+setInterval(updateNovels, 1000 * 30); //1hr e 5 min ( eu acho :D )
 
 
 //-------------------------------------------------------------//
