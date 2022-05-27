@@ -10,14 +10,19 @@ module.exports = {
     
     async function getChapters () {
       const arrChapter = await HinowaController.index();
+      const channelTarget = await bot.channels.fetch(channelId)
       
       arrChapter.map(chapter => {
-        const msgEmbed = new Discord.MessageEmbed()
+        try{
+          const msgEmbed = new Discord.MessageEmbed()
           .setColor('#f1f1f1')
           .setTitle(chapter.title)
           .setURL(chapter.url)
           .setImage(covers.hinowaGaCrush)
-        bot.channels.cache.get(channelId).send(msgEmbed)
+          channelTarget.send(msgEmbed)
+        } catch(e) {
+          console.log('[ERROR]', e)
+        }
       })
     }
     getChapters()

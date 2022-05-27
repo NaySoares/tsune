@@ -49,9 +49,9 @@ function updateNovels() {
   hinowa.execute(bot, channels.hinowaGaCrush)
 }
 
-setInterval(updateNovels, 1000 * 30); //1hr e 5 min ( eu acho :D )
+//setInterval(updateNovels, 1000 * 60 * 60); //1hr e 5 min ( eu acho :D )
 
-
+updateNovels()
 //-------------------------------------------------------------//
 app.use(cors());
 

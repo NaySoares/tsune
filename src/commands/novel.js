@@ -8,9 +8,12 @@ module.exports = {
     
     async function getNovels () {
       const arrNovel = await NovelController.index();
+      const channelTarget = await bot.channels.fetch(channelId)
+      //const guildMsg = await bot.guilds.cache.get('697958499589554217')
       
       arrNovel.map(novel => {
-        const msgEmbed = new Discord.MessageEmbed()
+        try {
+          const msgEmbed = new Discord.MessageEmbed()
           .setColor('#f1f1f1')
           .setTitle(novel.title)
           .setURL(novel.url)
@@ -18,8 +21,11 @@ module.exports = {
           .setImage(novel.img)
           .addFields(
             { name: 'tags', value: `${novel.category}`},
-          )
-        bot.channels.cache.get(channelId).send(msgEmbed)
+            )
+            channelTarget.send(msgEmbed)
+        } catch(e) {
+          console.log('[ERROR]', e)
+        }
       })
     }
     getNovels()
