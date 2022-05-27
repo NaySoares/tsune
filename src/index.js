@@ -6,7 +6,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
-const prefix = '!';
+const prefix = '?';
 
 const ping = require('./events/ping.js');
 const novels = require('./events/novels.js');
@@ -49,9 +49,8 @@ function updateNovels() {
   hinowa.execute(bot, channels.hinowaGaCrush)
 }
 
-//setInterval(updateNovels, 1000 * 60 * 60); //1hr e 5 min ( eu acho :D )
+setInterval(updateNovels, 1000 * 60 * 60); //1hr e 5 min ( eu acho :D )
 
-updateNovels()
 //-------------------------------------------------------------//
 app.use(cors());
 
