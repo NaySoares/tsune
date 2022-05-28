@@ -8,12 +8,10 @@ const mongoose = require('mongoose');
 const app = express();
 const prefix = '?';
 
-const ping = require('./events/ping.js');
-const novels = require('./events/novels.js');
 const channels = require('./configs/channels');
 const novel = require('./commands/novel.js');
-const createBot = require ('./configs/bot/botDiscord');
 const hinowa = require('./commands/hinowa.js');
+const createBot = require ('./configs/bot/botDiscord');
 //---------------------------------------------------//
 
 mongoose.connect(process.env.MONGODB_KEY, {
@@ -24,13 +22,14 @@ mongoose.connect(process.env.MONGODB_KEY, {
 const bot = createBot();
 bot.on('ready', () => {
   console.log('Olá mundo, eu sou a Tsune!')
+})
 
-  ping(bot, 'ping', 'pong!') 
-  //novels(bot, channels.justLightNovels, 'novels', 'novels aqui!')
+bot.on('ready', () => {
+  bot.events.get('observer').execute(bot, 'axios'),
+  bot.events.get('ping').execute(bot, 'ping', 'pong!')
 })
 
 bot.on('message', msg => {
-  
   if(!msg.content.startsWith(prefix) || msg.author.bot) return;
   
   const args = msg.content.slice(prefix.length).split(/ +/);
