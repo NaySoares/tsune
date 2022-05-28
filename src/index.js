@@ -40,6 +40,8 @@ bot.on('message', msg => {
     bot.commands.get('tsune').execute(bot, msg, args);
   } else if (command === 'comandos') {
     bot.commands.get('comandos').execute(msg, args);
+  } else if (command === 'clear') {
+    bot.commands.get('clear').execute(msg, args);
   }
 })
 
