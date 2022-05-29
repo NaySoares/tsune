@@ -51,6 +51,8 @@ bot.on('message', msg => {
     bot.commands.get('clear').execute(bot, msg, args);
   } else if (command === 'cultura') {
     bot.commands.get('cultura').execute(bot, msg);
+  } else if (command === 'status') {
+    bot.commands.get('status').execute(bot, msg);
   }
 })
 
