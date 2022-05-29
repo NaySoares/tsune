@@ -2,16 +2,19 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const process = require('process');
 
 const mongoose = require('mongoose');
 
 const app = express();
-const prefix = '?';
+const prefix = '!';
 
 const channels = require('./configs/channels');
 const novel = require('./commands/novel.js');
 const hinowa = require('./commands/hinowa.js');
 const createBot = require ('./configs/bot/botDiscord');
+const errorCommand = require('./errors/errorCommand');
+
 //---------------------------------------------------//
 
 mongoose.connect(process.env.MONGODB_KEY, {
@@ -19,6 +22,11 @@ mongoose.connect(process.env.MONGODB_KEY, {
 })
 
 //---------------------------------------------------//
+process.on('uncaughtException', function (err) {
+  console.log('Caught exception: ', err);
+  errorCommand.execute(bot, err.message, 'Api')
+});
+
 const bot = createBot();
 bot.on('ready', () => {
   console.log('Olá mundo, eu sou a Tsune!')
@@ -36,11 +44,13 @@ bot.on('message', msg => {
   const command = args.shift().toLowerCase();
   
   if (command === 'tsune') {
-    bot.commands.get('tsune').execute(bot, msg, args);
-  } else if (command === 'comandos') {
-    bot.commands.get('comandos').execute(msg, args);
+    bot.commands.get('tsune').execute(bot, msg);
+  } else if (command === 'help') {
+    bot.commands.get('help').execute(bot, msg);
   } else if (command === 'clear') {
-    bot.commands.get('clear').execute(msg, args);
+    bot.commands.get('clear').execute(bot, msg, args);
+  } else if (command === 'cultura') {
+    bot.commands.get('cultura').execute(bot, msg);
   }
 })
 
