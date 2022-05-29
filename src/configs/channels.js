@@ -4,6 +4,7 @@ const channels = {
   //--tsundoku--//
   menu: '765212713705930852',
   hinowaGaCrush: '795727440835510304',
+  logs: '980168863566147605',
   //----SERVER----//
   tsundoku: '697958499589554217'
 }
