@@ -7,7 +7,7 @@ const process = require('process');
 const mongoose = require('mongoose');
 
 const app = express();
-const prefix = '?';
+const prefix = '!';
 
 const channels = require('./configs/channels');
 const novel = require('./commands/novel.js');
