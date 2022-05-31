@@ -4,8 +4,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const process = require('process');
 
-const mongoose = require('mongoose');
-
 const app = express();
 const prefix = process.env.PREFIX_DEV || '?';
 
@@ -14,17 +12,16 @@ const novel = require('./commands/novel.js');
 const hinowa = require('./commands/hinowa.js');
 const createBot = require ('./configs/bot/botDiscord');
 const errorCommand = require('./errors/errorCommand');
+const mongooseCreateConnection = require('./services/mongoose')
 
 //---------------------------------------------------//
 
-mongoose.connect(process.env.MONGODB_KEY, {
-  useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
-})
+mongooseCreateConnection();
 
 //---------------------------------------------------//
 process.on('uncaughtException', function (err) {
   console.log('Caught exception: ', err);
-  errorCommand.execute(bot, err.message, 'Api')
+  errorCommand.execute(bot, err.message, 'API Discord')
 });
 
 const bot = createBot();
@@ -37,7 +34,7 @@ bot.on('ready', () => {
   bot.events.get('ping').execute(bot, 'ping', 'pong!')
 })
 
-bot.on('message', msg => {
+bot.on('messageCreate', msg => {
   if(!msg.content.startsWith(prefix) || msg.author.bot) return;
   
   const args = msg.content.slice(prefix.length).split(/ +/);
@@ -57,12 +54,12 @@ bot.on('message', msg => {
 })
 
 function updateNovels() {
-  console.log('tá atualizando!')
+  console.log('Verificando atualizações Novels e Mangás!')
   novel.execute(bot, channels.menu)
   hinowa.execute(bot, channels.hinowaGaCrush)
 }
 
-setInterval(updateNovels, 1000 * 60 * 60); //1hr e 5 min ( eu acho :D )
+setInterval(updateNovels, 1000 * 60 * 60); //1hr
 
 //-------------------------------------------------------------//
 app.use(cors());

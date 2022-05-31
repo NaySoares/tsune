@@ -5,7 +5,7 @@ const axios = require('axios')
 
 module.exports = {
   name: 'status',
-  description: 'Send status of apis',
+  description: 'Send status of APIs',
   async execute(bot, msg) {
 
     async function getStatus() {
@@ -14,13 +14,11 @@ module.exports = {
 
       try {
         statusHinowa = await axios.get('http://localhost:3330/').then( resp => {return resp.data})
-      } catch(e) {
-        errorCommand.execute(bot, 'Não foi possível realizar a chamada para Hinowa/Reddit', 'status')
+      } catch {
       }
       try {
         statusJust = await axios.get('http://localhost:3331/').then( resp => {return resp.data})
-      } catch(e) {
-        errorCommand.execute(bot, 'Não foi possível realizar a chamada para JustLightNovels', 'status')
+      } catch {
       }
 
       try {
@@ -33,7 +31,7 @@ module.exports = {
               { name: 'JustLightNovels', value: `${statusJust.status}` },
               { name: 'Hinowa', value: `${statusHinowa.status}` },
             )
-          msg.channel.send(msgEmbed)
+          msg.channel.send({embeds: [msgEmbed]})
 
         } else {
           msg.channel.send('Esse comando é restrito.')

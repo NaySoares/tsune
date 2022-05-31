@@ -9,10 +9,16 @@ module.exports= {
     try {
       if(msg.author.id === users.axios){
         const attachments = new MessageAttachment('src/assets/imgs/tsune.jpg')
-        msg.channel.send('A seu dispor, my master.', {files: [attachments]})
+        msg.channel.send({
+          content: 'A seu dispor, my master.',
+          files: [attachments]
+        })
       } else {
         const attachments = new MessageAttachment('src/assets/imgs/disgust.jpg')
-        msg.channel.send('O que você quer?', {files: [attachments]})
+        msg.channel.send({
+          content: 'O que você quer?',
+          files: [attachments]
+        })
       }
     }
     catch(e) {

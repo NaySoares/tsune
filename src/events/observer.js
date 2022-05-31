@@ -27,7 +27,7 @@ module.exports = {
             { name: 'Autor', value: `${msg.author}` },
             { name: 'Mensagem', value: `${msgLower}` },
           )
-        userTarget.send(msgEmbed)
+        userTarget.send({embeds: [msgEmbed]})
       }
     })
   }

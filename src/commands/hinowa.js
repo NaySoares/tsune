@@ -19,7 +19,7 @@ module.exports = {
             .setTitle(chapter.title)
             .setURL(chapter.url)
             .setImage(covers.hinowaGaCrush)
-          channelTarget.send(msgEmbed)
+          channelTarget.send({embeds: [msgEmbed]})
         } catch (e) {
           errorCommand.execute(bot, 'Houve um erro no envio da mensagem', 'Hinowa')
           console.log('[ERROR]', e)

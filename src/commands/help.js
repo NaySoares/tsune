@@ -15,7 +15,7 @@ module.exports = {
           { name: 'clear <quant>', value: 'Apaga um conjunto de mensagens' },
           { name: 'cultura', value: 'Mensagem de cultura' },
         )
-      msg.channel.send(msgEmbed)
+      msg.channel.send({embeds: [msgEmbed]})
     } catch (e) {
       errorCommand.execute(bot, 'Erro ao executar o comando', 'Help')
       console.log(e)
