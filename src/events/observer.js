@@ -8,7 +8,7 @@ module.exports = {
   async execute(bot, triggerText) {
     const userTarget = await bot.users.fetch(users.axios)
 
-    bot.on('message', msg => {
+    bot.on('messageCreate', msg => {
       if (msg.author.bot) return;
 
       const msgLower = msg.content.toLowerCase()
