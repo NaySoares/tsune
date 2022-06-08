@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const NovelController = require('../controllers/NovelController');
-const errorCommand = require('../errors/errorCommand');
+const users = require('../configs/users')
+const lightNovels = require('../configs/lightNovels')
 
 module.exports = {
   name: 'novel',
@@ -17,10 +18,14 @@ module.exports = {
           .setTitle(novel.title)
           .setURL(novel.url)
           .setDescription(novel.description)
-          .setImage(novel.img)
           .addFields(
             { name: 'tags', value: `${novel.category}` },
           )
+
+        if(lightNovels.includes(novel.title)) {
+          channelTarget.send({ content: `<@${users.bravo}> <@${users.roel}> <@${users.jeagles}> <@${users.nero}> alguém tem que ver isso aí.`})
+        } 
+
         channelTarget.send({ embeds: [msgEmbed] })
       })
     }
