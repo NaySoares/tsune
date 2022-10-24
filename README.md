@@ -1,7 +1,4 @@
 <h1 align="center">
-<img src="./.github/tsune.jpg" width="200px"/>
- </h1>
-<h1 align="center">
 Tsune Bot Discord
 </h1>
 
