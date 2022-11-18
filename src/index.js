@@ -8,8 +8,6 @@ const app = express();
 const prefix = process.env.PREFIX_DEV || '?';
 
 const channels = require('./configs/channels');
-const novel = require('./commands/novel.js');
-const hinowa = require('./commands/hinowa.js');
 const createBot = require ('./configs/bot/botDiscord');
 const errorCommand = require('./errors/errorCommand');
 const mongooseCreateConnection = require('./services/mongoose')
@@ -51,16 +49,19 @@ bot.on('messageCreate', msg => {
     bot.commands.get('cultura').execute(bot, msg);
   } else if (command === 'status') {
     bot.commands.get('status').execute(bot, msg);
+  } else if (command === 'novel') {
+    bot.commands.get('novel').execute(bot, channels.menu, msg);
+  } else if (command === 'elaina') {
+    bot.commands.get('elaina').execute(bot, msg);
   }
 })
 
-function updateNovels() {
-  console.log('Verificando atualizações Novels e Mangás!')
-  novel.execute(bot, channels.menu)
-  hinowa.execute(bot, channels.hinowaGaCrush)
-}
+// function updateNovels() {
+//   console.log('Verificando atualizações Novels e Mangás!')
+//   novel.execute(bot, channels.menu)
+// }
 
-setInterval(updateNovels, 1000 * 60 * 60); //1hr
+// setInterval(updateNovels, 1000 * 60 * 3); //1hr
 
 //-------------------------------------------------------------//
 app.use(cors());

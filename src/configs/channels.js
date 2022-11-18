@@ -8,7 +8,8 @@ const channels = {
   avisosMangas: '977381490042228766',
   editores: '848949338599194655',
   //----SERVER----//
-  tsundoku: '697958499589554217'
+  tsundoku: '697958499589554217',
+  teste: '969290306497445900'
 }
 
 module.exports = channels;

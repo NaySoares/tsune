@@ -9,6 +9,6 @@ module.exports = ErrorCommand = {
       .setColor('#ff0000')
       .setTitle(`Erro no comando ${command}`)
       .setDescription(`${msg}`)
-    channelTarget.send(msgEmbed)
+    channelTarget.send({ embeds: [msgEmbed] })
   }
 }
