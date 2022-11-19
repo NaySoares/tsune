@@ -14,6 +14,7 @@ module.exports = {
           { name: 'tsune', value: 'Uma mensagem de olá' },
           { name: 'clear <quant>', value: 'Apaga um conjunto de mensagens' },
           { name: 'cultura', value: 'Mensagem de cultura' },
+          { name: 'elaina', value: 'Imagem aleatória da Elaina (Majo no tabitabi)' },
         )
       msg.channel.send({embeds: [msgEmbed]})
     } catch (e) {

@@ -8,13 +8,13 @@ module.exports = {
     try {
       if (msg.author.id === users.axios) {
         if (!args[0]) {
-          return msg.reply('Quantas mensagens devo apagar? Use ?clear + quantidade.')
+          return msg.reply('Quantas mensagens devo apagar? Use clear + quantidade.')
         }
         if (isNaN(args[0])) {
           return msg.reply('Preciso que informe um número após o comando.')
         }
         if (args[0] > 100) {
-          return msg.reply('Mestre, informe um número menor que 100.')
+          return msg.reply('Informe um número menor que 100.')
         }
         if (args[0] < 1) {
           return msg.reply('Foi uma brincadeira?')

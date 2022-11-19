@@ -1,11 +1,10 @@
 const Discord = require('discord.js');
-const { MessageAttachment } = require('discord.js');
 const HinowaController = require('../controllers/HinowaController');
 const covers = require('../services/covers')
 
 module.exports = {
   name: 'hinowa',
-  description: 'sei lá',
+  description: 'aviso de lançamento de novos capítulos de Hinowa',
   execute(bot, channelId) {
 
     async function getChapters() {

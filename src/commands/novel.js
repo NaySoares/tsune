@@ -6,7 +6,7 @@ const {MessageAttachment} = require('discord.js');
 
 module.exports = {
   name: 'novel',
-  description: 'sei lá',
+  description: 'Posta as novas atualizações de novels quando disponíveis',
   execute(bot, channelId, msg) {
     if (msg.author.id === users.axios) {
 
@@ -25,7 +25,9 @@ module.exports = {
             )
 
           if (lightNovels.includes(novel.title)) {
-            channelTarget.send({ content: `<@${users.bravo}> <@${users.roel}> <@${users.jeagles}> <@${users.nero}> alguém tem que ver isso aí.` })
+            channelTarget.send({
+              content: `<@${users.bravo}> <@${users.roel}> <@${users.jeagles}> <@${users.nero}> alguém tem que ver isso aí.`
+            })
           }
 
           channelTarget.send({ embeds: [msgEmbed] })
@@ -35,7 +37,9 @@ module.exports = {
           msg.channel.send('Lista de novels em dia')
         }
       }
+
       getNovels()
+      
     } else {
       const attachments = new MessageAttachment('src/assets/imgs/disgust.jpg')
       msg.channel.send({

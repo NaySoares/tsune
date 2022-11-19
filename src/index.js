@@ -47,21 +47,14 @@ bot.on('messageCreate', msg => {
     bot.commands.get('clear').execute(bot, msg, args);
   } else if (command === 'cultura') {
     bot.commands.get('cultura').execute(bot, msg);
-  } else if (command === 'status') {
-    bot.commands.get('status').execute(bot, msg);
+  // } else if (command === 'status') {
+  //   bot.commands.get('status').execute(bot, msg);
   } else if (command === 'novel') {
     bot.commands.get('novel').execute(bot, channels.menu, msg);
   } else if (command === 'elaina') {
     bot.commands.get('elaina').execute(bot, msg);
   }
 })
-
-// function updateNovels() {
-//   console.log('Verificando atualizações Novels e Mangás!')
-//   novel.execute(bot, channels.menu)
-// }
-
-// setInterval(updateNovels, 1000 * 60 * 3); //1hr
 
 //-------------------------------------------------------------//
 app.use(cors());
