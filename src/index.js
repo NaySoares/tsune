@@ -53,6 +53,8 @@ bot.on('messageCreate', msg => {
     bot.commands.get('novel').execute(bot, channels.menu, msg);
   } else if (command === 'elaina') {
     bot.commands.get('elaina').execute(bot, msg);
+  } else if (command === 'warn') {
+    bot.commands.get('warn').execute(bot, msg, args);
   }
 })
 

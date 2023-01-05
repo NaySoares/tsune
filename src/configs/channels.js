@@ -3,7 +3,6 @@ const channels = {
   avisos: '970503339601178647',
   //--tsundoku--//
   menu: '765212713705930852',
-  hinowaGaCrush: '795727440835510304',
   logs: '980168863566147605',
   avisosMangas: '977381490042228766',
   editores: '848949338599194655',
