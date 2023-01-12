@@ -1,5 +1,4 @@
 const Discord = require('discord.js');
-const createBot = require('../configs/bot/botDiscord');
 const channels = require('../configs/channels');
 
 module.exports = ErrorCommand = {

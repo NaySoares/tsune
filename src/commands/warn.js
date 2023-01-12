@@ -1,20 +1,28 @@
 const users = require('../configs/users')
-const {MessageAttachment} = require('discord.js');
 const errorCommand = require('../errors/errorCommand');
 
 module.exports= {
   name: 'warn',
-  description: 'Default Message',
+  description: 'Send message for a channel',
   async execute(bot, msg, args) {
-    const channelTarget = await bot.channels.fetch(args)
+    let channelTarget;
+
+    try { 
+      channelTarget = await bot.channels.fetch(args[0])
+    } catch(e) {
+      return msg.reply('Informe um ID válido');
+    }
 
     try {
       if(msg.author.id === users.axios){
+        if (!args[1]) {
+          return msg.reply('Não posso enviar uma mensagem vazia! Informe a mensagem após o ID do canal')
+        }
         channelTarget.send({
-          content: 'Axios entrou em processo de aposentadoria, não se preocupe, ele será avisado do seu interesse.'
+          content: args[1]
         })
       } else {
-        return
+        return msg.reply('Comando restrito!')
       }
     }
     catch(e) {

@@ -5,7 +5,7 @@ const cors = require('cors');
 const process = require('process');
 
 const app = express();
-const prefix = process.env.PREFIX_DEV || '?';
+const prefix = process.env.PREFIX_DEV || '!';
 
 const channels = require('./configs/channels');
 const createBot = require ('./configs/bot/botDiscord');
@@ -24,13 +24,12 @@ process.on('uncaughtException', function (err) {
 
 const bot = createBot();
 bot.on('ready', () => {
-  console.log('Olá mundo, eu sou a Tsune!')
+  console.log(process.env.INTRODUCTION_MYSELF || 'Olá mundo eu sou a Tsune!')
 })
 
-bot.on('ready', () => {
+bot.on('ready', () => {  
   bot.events.get('observer').execute(bot, 'axios'),
   bot.events.get('ping').execute(bot, 'ping', 'pong!')
-  bot.events.get('reaction').execute(bot)
 })
 
 bot.on('messageCreate', msg => {
@@ -47,8 +46,6 @@ bot.on('messageCreate', msg => {
     bot.commands.get('clear').execute(bot, msg, args);
   } else if (command === 'cultura') {
     bot.commands.get('cultura').execute(bot, msg);
-  // } else if (command === 'status') {
-  //   bot.commands.get('status').execute(bot, msg);
   } else if (command === 'novel') {
     bot.commands.get('novel').execute(bot, channels.menu, msg);
   } else if (command === 'elaina') {

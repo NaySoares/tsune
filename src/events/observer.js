@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
-
-const users = require('../configs/users')
+const users = require('../configs/users');
+const RandomReplyAxios = require('../assets/replys/axios');
 
 module.exports = {
   name: 'observer',
@@ -28,6 +28,14 @@ module.exports = {
             { name: 'Mensagem', value: `${msgLower}` },
           )
         userTarget.send({embeds: [msgEmbed]})
+      }
+
+      if (matchMessage != -1) {
+        
+        const reply = RandomReplyAxios();
+        msg.channel.send({
+          content: `${reply.reply + " " + reply.gif}`,
+        })
       }
     })
   }
