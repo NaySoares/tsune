@@ -2,7 +2,7 @@ function RandomReplyAxios() {
   const replysAxios = [
     {
       id: 1,
-      reply: "Axios, quanto tempo que não falo ele...",
+      reply: "Axios, quanto tempo que não falo com ele...",
       gif: "https://tenor.com/bVSTk.gif",
     },
     {
