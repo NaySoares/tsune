@@ -30,6 +30,7 @@ module.exports = {
         userTarget.send({embeds: [msgEmbed]})
       }
 
+      /*
       if (matchMessage != -1) {
         
         const reply = RandomReplyAxios();
@@ -37,6 +38,7 @@ module.exports = {
           content: `${reply.reply + " " + reply.gif}`,
         })
       }
+      */
     })
   }
 }
