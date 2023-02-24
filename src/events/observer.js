@@ -1,6 +1,7 @@
 const Discord = require('discord.js');
 const users = require('../configs/users');
-const RandomReplyAxios = require('../assets/replys/axios');
+//const RandomReplyAxios = require('../assets/reply/axios');
+const RandomReplyBravo = require('../assets/reply/bravo');
 
 module.exports = {
   name: 'observer',
@@ -14,7 +15,8 @@ module.exports = {
       const msgLower = msg.content.toLowerCase()
       
       const matchMessage = msgLower.indexOf(triggerText);
-      if (matchMessage != -1) {
+  
+      if (matchMessage != -1 && msgLower === 'axios') {
         //getPreviousMessages(msg)
 
         const msgEmbed = new Discord.MessageEmbed()
@@ -39,10 +41,13 @@ module.exports = {
         })
       }
       */
+      if (matchMessage != -1 && msgLower === 'site novo') {
+        
+        const reply = RandomReplyBravo();
+        msg.channel.send({
+          content: reply.reply,
+        })
+      }
     })
   }
-}
-
-async function getPreviousMessages(msgRef) {
- //nothing implented yet
 }
