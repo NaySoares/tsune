@@ -14,7 +14,7 @@ function RandomReplyBravo() {
     },
     {
       id: 4,
-      reply: "Deve sair segunda-feira, isso se o Bravo não inventar de ilustrar a careca.",
+      reply: "Deve sair segunda-feira, isso se o Bravo não inventar de lustrar a careca.",
     }
   ]
   const reply = Math.floor(Math.random() * replyBravo.length)
