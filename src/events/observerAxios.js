@@ -1,10 +1,9 @@
 const Discord = require('discord.js');
 const users = require('../configs/users');
 //const RandomReplyAxios = require('../assets/reply/axios');
-const RandomReplyBravo = require('../assets/reply/bravo');
 
 module.exports = {
-  name: 'observer',
+  name: 'observerAxios',
   description: 'Watch messages with specific words',
   async execute(bot, triggerText) {
     const userTarget = await bot.users.fetch(users.axios)
@@ -16,9 +15,7 @@ module.exports = {
       
       const matchMessage = msgLower.indexOf(triggerText);
   
-      if (matchMessage != -1 && msgLower === 'axios') {
-        //getPreviousMessages(msg)
-
+      if (matchMessage != -1) {
         const msgEmbed = new Discord.MessageEmbed()
           .setColor('#ff0000')
           .setTitle('Aviso: Tracked Message')
@@ -41,13 +38,6 @@ module.exports = {
         })
       }
       */
-      if (matchMessage != -1 && msgLower === 'site novo') {
-        
-        const reply = RandomReplyBravo();
-        msg.channel.send({
-          content: reply.reply,
-        })
-      }
     })
   }
 }

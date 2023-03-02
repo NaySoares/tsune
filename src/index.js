@@ -28,8 +28,8 @@ bot.on('ready', () => {
 })
 
 bot.on('ready', () => {  
-  bot.events.get('observer').execute(bot, 'axios'),
-  bot.events.get('observer').execute(bot, 'site novo'),
+  bot.events.get('observerAxios').execute(bot, 'axios'),
+  bot.events.get('observerBravo').execute(bot, 'site novo'),
   bot.events.get('ping').execute(bot, 'ping', 'pong!')
 })
 
