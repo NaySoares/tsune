@@ -6,12 +6,11 @@ module.exports = {
   description: 'Obviously a command of culture.',
   execute(bot, msg) {
     try {
-      const attachments = new MessageAttachment('src/assets/imgs/culture.jpg')
-      msg.channel.send({ files: [attachments] })
+      const attachments = new MessageAttachment('src/assets/imgs/culture.jpg');
+      msg.channel.send({ files: [attachments] });
+    } catch (e) {
+      errorCommand.execute(bot, 'Erro ao carregar a imagem', 'cultura');
+      console.log(e);
     }
-    catch (e) {
-      errorCommand.execute(bot, 'Erro ao carregar a imagem', 'cultura')
-      console.log(e)
-    }
-  }
-}
+  },
+};

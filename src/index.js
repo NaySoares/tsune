@@ -8,37 +8,37 @@ const app = express();
 const prefix = process.env.PREFIX_DEV || '!';
 
 const channels = require('./configs/channels');
-const createBot = require ('./configs/bot/botDiscord');
+const createBot = require('./configs/bot/botDiscord');
 const errorCommand = require('./errors/errorCommand');
-const mongooseCreateConnection = require('./services/mongoose')
+const mongooseCreateConnection = require('./services/mongoose');
 
-//---------------------------------------------------//
+// ---------------------------------------------------//
 
 mongooseCreateConnection();
 
-//---------------------------------------------------//
+// ---------------------------------------------------//
 process.on('uncaughtException', function (err) {
   console.log('Caught exception: ', err);
-  errorCommand.execute(bot, err.message, 'API Discord')
+  errorCommand.execute(bot, err.message, 'API Discord');
 });
 
 const bot = createBot();
 bot.on('ready', () => {
-  console.log(process.env.INTRODUCTION_MYSELF || 'Olá mundo eu sou a Tsune!')
-})
+  console.log(process.env.INTRODUCTION_MYSELF || 'Olá mundo eu sou a Tsune!');
+});
 
-bot.on('ready', () => {  
-  bot.events.get('observerAxios').execute(bot, 'axios'),
-  bot.events.get('observerBravo').execute(bot, 'site novo'),
-  bot.events.get('ping').execute(bot, 'ping', 'pong!')
-})
+bot.on('ready', () => {
+  bot.events.get('observerAxios').execute(bot, 'axios');
+  bot.events.get('observerBravo').execute(bot, 'site novo');
+  bot.events.get('ping').execute(bot, 'ping', 'pong!');
+});
 
-bot.on('messageCreate', msg => {
-  if(!msg.content.startsWith(prefix) || msg.author.bot) return;
-  
+bot.on('messageCreate', (msg) => {
+  if (!msg.content.startsWith(prefix) || msg.author.bot) return;
+
   const args = msg.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
-  
+
   if (command === 'tsune') {
     bot.commands.get('tsune').execute(bot, msg);
   } else if (command === 'help') {
@@ -54,13 +54,13 @@ bot.on('messageCreate', msg => {
   } else if (command === 'warn') {
     bot.commands.get('warn').execute(bot, msg, args);
   }
-})
+});
 
-//-------------------------------------------------------------//
+// -------------------------------------------------------------//
 app.use(cors());
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(require('./routes'));
 

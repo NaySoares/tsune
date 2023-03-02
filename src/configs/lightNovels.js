@@ -11,7 +11,7 @@ const lightNovels = [
   'The World of Otome Games is Tough For Mobs',
   'Yuusha no Segare',
   'Death March to the Parallel World Rhapsody',
-  'Tearmoon Empire'
-]
+  'Tearmoon Empire',
+];
 
 module.exports = lightNovels;

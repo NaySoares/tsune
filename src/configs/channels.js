@@ -1,17 +1,17 @@
 const channels = {
-  //--server viv--//
-  justLightNovels:'969303901847302214',
+  // --server viv--//
+  justLightNovels: '969303901847302214',
   avisos: '970503339601178647',
   logs: '980168863566147605',
-  
-  //--tsundoku--//
+
+  // --tsundoku--//
   menu: '765212713705930852',
   avisosMangas: '977381490042228766',
   editores: '848949338599194655',
-  
-  //----SERVERS----//
+
+  // ----SERVERS----//
   tsundoku: '697958499589554217',
-  teste: '969290306497445900'
-}
+  teste: '969290306497445900',
+};
 
 module.exports = channels;
