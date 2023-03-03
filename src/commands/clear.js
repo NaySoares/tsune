@@ -21,7 +21,6 @@ module.exports = {
         if (args[0] < 1) {
           return msg.reply('Foi uma brincadeira?');
         }
-
         await msg.channel.messages
           .fetch({ limit: parseInt(args[0]) })
           .then((messages) => {
