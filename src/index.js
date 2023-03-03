@@ -53,6 +53,8 @@ bot.on('messageCreate', (msg) => {
     bot.commands.get('elaina').execute(bot, msg);
   } else if (command === 'warn') {
     bot.commands.get('warn').execute(bot, msg, args);
+  } else if (command === 'avatar') {
+    bot.commands.get('avatar').execute(bot, msg);
   }
 });
 
