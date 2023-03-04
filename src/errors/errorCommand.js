@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const channels = require('../configs/channels');
 
-module.exports = errorCommand = {
+module.exports = {
   async execute(bot, msg, command) {
     const channelTarget = await bot.channels.fetch(channels.logs);
     const msgEmbed = new Discord.MessageEmbed()
