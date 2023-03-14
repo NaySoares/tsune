@@ -12,6 +12,7 @@ const lightNovels = [
   'Yuusha no Segare',
   'Death March to the Parallel World Rhapsody',
   'Tearmoon Empire',
+  'Rebuild World',
 ];
 
 module.exports = lightNovels;
