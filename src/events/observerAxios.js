@@ -5,8 +5,9 @@ const users = require('../configs/users');
 module.exports = {
   name: 'observerAxios',
   description: 'Watch messages with specific words',
-  async execute(bot, triggerText) {
+  async execute(bot) {
     const userTarget = await bot.users.fetch(users.axios);
+    const triggerText = 'axios';
 
     bot.on('messageCreate', (msg) => {
       if (msg.author.bot) return;

@@ -3,7 +3,8 @@ const RandomReplyBravo = require('../assets/reply/bravo');
 module.exports = {
   name: 'observerBravo',
   description: 'Watch messages with specific words',
-  async execute(bot, triggerText) {
+  async execute(bot) {
+    const triggerText = 'site novo';
     bot.on('messageCreate', (msg) => {
       if (msg.author.bot) return;
 

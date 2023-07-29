@@ -3,15 +3,16 @@ const NovelController = require('../controllers/NovelController');
 const users = require('../configs/users');
 const lightNovels = require('../configs/lightNovels');
 const { MessageAttachment } = require('discord.js');
+const channels = require('../configs/channels');
 
 module.exports = {
   name: 'novel',
   description: 'Posta as novas atualizações de novels quando disponíveis',
-  execute(bot, channelId, msg) {
+  execute(bot, msg) {
     if (msg.author.id === users.axios) {
       async function getNovels() {
         const arrNovel = await NovelController.index();
-        const channelTarget = await bot.channels.fetch(channelId);
+        const channelTarget = await bot.channels.fetch(channels.menu);
 
         arrNovel.map((novel) => {
           const msgEmbed = new Discord.MessageEmbed()
@@ -28,6 +29,8 @@ module.exports = {
           }
 
           channelTarget.send({ embeds: [msgEmbed] });
+          // this return is simply to avoid the warning of the map function
+          return null;
         });
 
         if (arrNovel.length === 0) {
