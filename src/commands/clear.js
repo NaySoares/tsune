@@ -1,4 +1,4 @@
-const users = require('../configs/users');
+const groups = require('../utils/userGroups');
 const errorCommand = require('../errors/errorCommand');
 
 module.exports = {
@@ -6,7 +6,7 @@ module.exports = {
   description: 'Deleta um conjunto de mensagens',
   async execute(bot, msg, args) {
     try {
-      if (msg.author.id === users.axios) {
+      if (Object.values(groups.owner).includes(msg.author.id)) {
         if (!args[0]) {
           return msg.reply(
             'Quantas mensagens devo apagar? Use clear + quantidade.',
