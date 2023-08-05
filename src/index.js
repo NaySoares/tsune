@@ -40,6 +40,7 @@ bot.on('messageCreate', (msg) => {
 
   bot.commands.each((commands) => {
     if (command === commands.name) {
+      if (commands.active === false) return;
       commands.execute(bot, msg, args);
     }
   });

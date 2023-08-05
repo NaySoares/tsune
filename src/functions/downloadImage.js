@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 
 function Download(url, fileName) {
-  const destination = path.resolve(__dirname, '..', 'images', `${fileName}`);
+  const destination = path.resolve(__dirname, '..', 'volumes', `${fileName}`);
 
   https.get(url, function (res) {
     const fileStream = fs.createWriteStream(`${destination}`);
@@ -14,4 +14,4 @@ function Download(url, fileName) {
   });
 }
 
-module.exports = Download();
+module.exports = Download;
