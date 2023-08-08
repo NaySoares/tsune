@@ -7,23 +7,22 @@ module.exports = {
   name: 'dayOfWeek',
   description: 'Send image with evangelion title everyday',
   async execute(bot) {
-
-    // Saturday 7:00 AM
+    // Every day at 8:00 AM
     cron.schedule(
       '0 8 * * *',
       async () => {
         try {
-          const date = new Date()
-          const weekdays = []
-            weekdays[0] = "Sunday";
-            weekdays[1] = "Monday";
-            weekdays[2] = "Tuesday";
-            weekdays[3] = "Wednesday";
-            weekdays[4] = "Thursday";
-            weekdays[5] = "Friday";
-            weekdays[6] = "Saturday";
-          const nameOfTheDay = weekdays[date.getDay()]
-          const channelTarget = await bot.channels.fetch(channels.chat_evangelicos);
+          const date = new Date();
+          const weekdays = [];
+          weekdays[0] = 'Sunday';
+          weekdays[1] = 'Monday';
+          weekdays[2] = 'Tuesday';
+          weekdays[3] = 'Wednesday';
+          weekdays[4] = 'Thursday';
+          weekdays[5] = 'Friday';
+          weekdays[6] = 'Saturday';
+          const nameOfTheDay = weekdays[date.getDay()];
+          const channelTarget = await bot.channels.fetch(channels.geral);
           const attachments = new MessageAttachment(
             `src/assets/imgs/evangelion${nameOfTheDay}.png`,
           );
@@ -44,5 +43,4 @@ module.exports = {
       },
     );
   },
-  };
-  
+};
