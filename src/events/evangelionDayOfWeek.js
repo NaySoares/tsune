@@ -10,7 +10,7 @@ module.exports = {
 
     // Saturday 7:00 AM
     cron.schedule(
-      '0 0 * * *',
+      '0 8 * * *',
       async () => {
         try {
           const date = new Date()
