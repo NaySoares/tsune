@@ -2,7 +2,6 @@
 
 const owner = {
   tsune: '848923507756498944',
-  axios: '116347060738850821',
 };
 
 const dev = {
@@ -21,6 +20,7 @@ const admin = {
 
 const special = {
   barao: '204271295943147520',
+  axios: '116347060738850821',
 };
 
 const groups = {
