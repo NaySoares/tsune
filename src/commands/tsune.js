@@ -13,15 +13,27 @@ module.exports = {
           content: 'A seu dispor, my master.',
           files: [attachments],
         });
-      } else {
+
+        return;
+      }
+
+      if (msg.author.id === users.barao) {
         const attachments = new MessageAttachment(
-          'src/assets/imgs/disgust.jpg',
+          'src/assets/elaina/majo15.png',
         );
         msg.channel.send({
-          content: 'O que você quer?',
+          content: 'Olá Barão!',
           files: [attachments],
         });
+
+        return;
       }
+
+      const attachments = new MessageAttachment('src/assets/imgs/disgust.jpg');
+      msg.channel.send({
+        content: 'O que você quer?',
+        files: [attachments],
+      });
     } catch (e) {
       errorCommand.execute(
         bot,
