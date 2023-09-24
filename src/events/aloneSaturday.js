@@ -12,7 +12,7 @@ module.exports = {
       '0 20 * * 6',
       async () => {
         try {
-          const channelTarget = await bot.channels.fetch(channels.tsunv2);
+          const channelTarget = await bot.channels.fetch(channels.geral);
           const attachments = new MessageAttachment(
             'src/assets/imgs/aloneSaturday.jpg',
           );
